@@ -5,7 +5,7 @@ var stringify = require('json-stringify-safe')
 
 function inbound (state, key) {
   if (typeof state !== 'string') state = stringify(state)
-  return LZ.compress(state)
+  return LZ.compressToUTF16(state)
 }
 
 function outbound (state, key) {
@@ -14,7 +14,7 @@ function outbound (state, key) {
     return state
   }
   try {
-    var newState = JSON.parse(LZ.decompress(state))
+    var newState = JSON.parse(LZ.decompressFromUTF16(state))
     return newState
   } catch (err) {
     return null
