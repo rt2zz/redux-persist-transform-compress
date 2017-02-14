@@ -2,9 +2,15 @@
   "name": "redux-persist-transform-compress",
   "version": "4.1.0",
   "description": "compress your redux state",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"no tests specified\" && exit 0"
+    "test": "echo \"no tests specified\" && exit 0",
+    "copy-types": "cp -r type-definitions/ lib/",
+    "clean": "rimraf lib",
+    "build": "npm run build:es5 && npm run copy-types",
+    "build:es5": "babel src --out-dir lib",
+    "prepublish": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
@@ -12,18 +18,36 @@
   },
   "homepage": "https://github.com/rt2zz/redux-persist-transform-compress",
   "author": "rt2zz <zack@root-two.com>",
+  "contributors": [
+    "Karol Janyst <lapkom@gmail.com> (https://github.com/LKay)"
+  ],
   "license": "MIT",
   "dependencies": {
     "json-stringify-safe": "^5.0.1",
-    "lz-string": "^1.4.4"
+    "lz-string": "^1.4.4",
+    "process": "^0.11.9"
   },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "rimraf": "~2.5.4"
+  },
+  "peerDependencies": {
+    "redux-persist": ">=4.0.0"
+  },
+  "files": [
+    "lib",
+    "es",
+    "src",
+    "index.d.ts"
+  ],
   "keywords": [
     "redux",
     "redux-persist",
     "redux-persist-transform",
     "compression"
-  ],
-  "peerDependencies": {
-    "redux-persist": ">=3.0.0"
-  }
+  ]
 }
