@@ -1,6 +1,6 @@
 {
   "name": "redux-persist-transform-compress",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "compress your redux state",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
