@@ -10,7 +10,7 @@ export default function createTransformCompress(config) {
       (state) => {
           if (typeof state !== "string") {
               if (NODE_ENV !== "production") {
-                  console.error("redux-persist-transform-compress: expected outbound state to be a string")
+                  console.warn("redux-persist-transform-compress: expected outbound state to be a string")
               }
               return state
           }
@@ -19,7 +19,7 @@ export default function createTransformCompress(config) {
               return JSON.parse(LZ.decompressFromUTF16(state))
           } catch (err) {
               if (NODE_ENV !== "production") {
-                  console.error("redux-persist-transform-compress: error while decompressing state", err)
+                  console.warn("redux-persist-transform-compress: error while decompressing state", err)
               }
               return null
           }
