@@ -1,3 +1,3 @@
-import { PersistorConfig, Transform } from "redux-persist";
+import { PersistConfig, Transform } from "redux-persist";
 
-export default function createCompressor<State, Raw> (config?: PersistorConfig): Transform<State, Raw>;
+export default function createCompressor<State, Raw> (config?: PersistConfig): Transform<State, Raw>;
